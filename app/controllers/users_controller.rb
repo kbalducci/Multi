@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    @current_page = 1
     @users = User.all
+
   end
 
   # GET /users/1
@@ -14,7 +16,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    @user = User.new.limit(20)
   end
 
   # GET /users/1/edit
