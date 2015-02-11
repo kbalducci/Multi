@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @current_page = 1
-    @users = User.all
+    @current_page = params[:page].to_i || 0
+    @users = User.limit(20).offset(20 * params[:page].to_i)
 
   end
 
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new.limit(20)
+    @user = User.new
   end
 
   # GET /users/1/edit
